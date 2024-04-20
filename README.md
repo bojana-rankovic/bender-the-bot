@@ -23,6 +23,7 @@
   bender
 </h1>
 
+### Note: functionality is split between branches: main and redirect_users 
 
 <br>
 
@@ -60,29 +61,7 @@ The most recent code and data can be installed directly from GitHub with:
 $ pip install git+https://github.com/bojana-rankovic/bender-the-bot.git
 ```
 
-## ✅ Citation
 
-Philippe Schwaller et al. "Molecular Transformer: A Model for Uncertainty-Calibrated Chemical Reaction Prediction". ACS Central Science 2019 5 (9), 1572-1583
-```bibtex
-@article{doi:10.1021/acscentsci.9b00576,
-    author = {Schwaller, Philippe and Laino, Teodoro and Gaudin, Théophile and Bolgar, Peter and Hunter, Christopher A. and Bekas, Costas and Lee, Alpha A.},
-    title = {Molecular Transformer: A Model for Uncertainty-Calibrated Chemical Reaction Prediction},
-    journal = {ACS Central Science},
-    volume = {5},
-    number = {9},
-    pages = {1572-1583},
-    year = {2019},
-    doi = {10.1021/acscentsci.9b00576},
-}
-
-@Misc{this_repo,
-  author = { Bojana Rankovic },
-  title = { bender - Bender is the nicest bot! },
-  howpublished = {Github},
-  year = {2023},
-  url = {https://github.com/bojana-rankovic/bender-the-bot }
-}
-```
 
 
 ## 🛠️ For Developers
