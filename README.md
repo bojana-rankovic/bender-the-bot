@@ -2,21 +2,19 @@
 
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/repo_logo_dark.png" width='100%'>
-  <source media="(prefers-color-scheme: light)" srcset="./assets/repo_logo_light.png" width='100%'>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/bender_slackbot.png" width='100%'>
   <img alt="Project logo" src="/assets/" width="100%">
 </picture>
 
 <br>
 
-[![tests](https://github.com/schwallergroup/bender-the-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/schwallergroup/bender-the-bot)
-[![DOI:10.1101/2020.07.15.204701](https://zenodo.org/badge/DOI/10.48550/arXiv.2304.05376.svg)](https://doi.org/10.48550/arXiv.2304.05376)
+[![tests](https://github.com/bojana-rankovic/bender-the-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/bojana-rankovic/bender-the-bot)
 [![PyPI](https://img.shields.io/pypi/v/bender-the-bot)](https://img.shields.io/pypi/v/bender-the-bot)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bender-the-bot)](https://img.shields.io/pypi/pyversions/bender-the-bot)
 [![Documentation Status](https://readthedocs.org/projects/bender/badge/?version=latest)](https://bender.readthedocs.io/en/latest/?badge=latest)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Cookiecutter template from @SchwallerGroup](https://img.shields.io/badge/Cookiecutter-schwallergroup-blue)](https://github.com/schwallergroup/liac-repo)
-[![Learn more @SchwallerGroup](https://img.shields.io/badge/Learn%20%0Amore-schwallergroup-blue)](https://schwallergroup.github.io)
+[![Cookiecutter template from @bojana-rankovic](https://img.shields.io/badge/Cookiecutter-bojana-rankovic-blue)](https://github.com/bojana-rankovic/liac-repo)
+[![Learn more @bojana-rankovic](https://img.shields.io/badge/Learn%20%0Amore-bojana-rankovic-blue)](https://bojana-rankovic.github.io)
 
 
 
@@ -25,11 +23,20 @@
   bender
 </h1>
 
+### Note: functionality is split between branches: main and redirect_users 
 
 <br>
 
 
-Bender is the nicest bot!
+## Check out the demo!
+
+
+https://github.com/bojana-rankovic/bender-the-bot/assets/11743428/5be9b60f-0579-475f-b3f9-5f492c90bd36
+
+
+
+
+Bender is the nicest bot! Use it in your Slack workspace to make your life easier.
 
 ## 🔥 Usage
 
@@ -51,32 +58,10 @@ $ pip install bender
 The most recent code and data can be installed directly from GitHub with:
 
 ```bash
-$ pip install git+https://github.com/schwallergroup/bender-the-bot.git
+$ pip install git+https://github.com/bojana-rankovic/bender-the-bot.git
 ```
 
-## ✅ Citation
 
-Philippe Schwaller et al. "Molecular Transformer: A Model for Uncertainty-Calibrated Chemical Reaction Prediction". ACS Central Science 2019 5 (9), 1572-1583
-```bibtex
-@article{doi:10.1021/acscentsci.9b00576,
-    author = {Schwaller, Philippe and Laino, Teodoro and Gaudin, Théophile and Bolgar, Peter and Hunter, Christopher A. and Bekas, Costas and Lee, Alpha A.},
-    title = {Molecular Transformer: A Model for Uncertainty-Calibrated Chemical Reaction Prediction},
-    journal = {ACS Central Science},
-    volume = {5},
-    number = {9},
-    pages = {1572-1583},
-    year = {2019},
-    doi = {10.1021/acscentsci.9b00576},
-}
-
-@Misc{this_repo,
-  author = { Bojana Rankovic },
-  title = { bender - Bender is the nicest bot! },
-  howpublished = {Github},
-  year = {2023},
-  url = {https://github.com/schwallergroup/bender-the-bot }
-}
-```
 
 
 ## 🛠️ For Developers
@@ -90,7 +75,7 @@ Philippe Schwaller et al. "Molecular Transformer: A Model for Uncertainty-Calibr
 ### 👐 Contributing
 
 Contributions, whether filing an issue, making a pull request, or forking, are appreciated. See
-[CONTRIBUTING.md](https://github.com/schwallergroup/bender-the-bot/blob/master/.github/CONTRIBUTING.md) for more information on getting involved.
+[CONTRIBUTING.md](https://github.com/bojana-rankovic/bender-the-bot/blob/master/.github/CONTRIBUTING.md) for more information on getting involved.
 
 
 ### Development Installation
@@ -98,7 +83,7 @@ Contributions, whether filing an issue, making a pull request, or forking, are a
 To install in development mode, use the following:
 
 ```bash
-$ git clone git+https://github.com/schwallergroup/bender-the-bot.git
+$ git clone git+https://github.com/bojana-rankovic/bender-the-bot.git
 $ cd bender-the-bot
 $ pip install -e .
 ```
@@ -112,14 +97,14 @@ run reproducibly with:
 $ tox
 ```
 
-Additionally, these tests are automatically re-run with each commit in a [GitHub Action](https://github.com/schwallergroup/bender-the-bot/actions?query=workflow%3ATests).
+Additionally, these tests are automatically re-run with each commit in a [GitHub Action](https://github.com/bojana-rankovic/bender-the-bot/actions?query=workflow%3ATests).
 
 ### 📖 Building the Documentation
 
 The documentation can be built locally using the following:
 
 ```shell
-$ git clone git+https://github.com/schwallergroup/bender-the-bot.git
+$ git clone git+https://github.com/bojana-rankovic/bender-the-bot.git
 $ cd bender-the-bot
 $ tox -e docs
 $ open docs/build/html/index.html
