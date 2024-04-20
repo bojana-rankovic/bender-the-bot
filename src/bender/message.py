@@ -1,7 +1,4 @@
 from slack_bolt.async_app import AsyncApp
-from slack_sdk import WebClient
-from slack_sdk.errors import SlackApiError
-
 import os
 from urllib.parse import urlparse
 import re
@@ -61,35 +58,6 @@ def get_page_title(url):
         return "Error fetching title"
 
 
-#Function to transform text into audio and save it as a file
-def save_audio_file(text, HF_API_KEY, filename="output.wav"):
-    API_URL = "https://api-inference.huggingface.co/models/facebook/mms-tts-eng"
-    headers = {f"Authorization": "Bearer {HF_API_KEY}"}
-    payload = {"inputs": text}
-    response = requests.post(API_URL, headers=headers, json=payload)
-    if response.status_code == 200:
-        with open(filename, "wb") as f:
-            f.write(response.content)
-        return filename
-    else:
-        return None
-
-#Upload audio file to Slack
-async def upload_file_to_slack(channel_id, file_path):
-    client = WebClient(token=os.environ["SLACK_BOT_TOKEN"])
-    try:
-        response = await client.files_upload(
-            channels=channel_id,
-            file=file_path,
-            filename=os.path.basename(file_path),
-            title="Here's your audio response!"
-        )
-        print("File uploaded successfully: ", response["file"]["id"])
-    except SlackApiError as e:
-        print(f"File upload failed: {e.response['error']}")
-
-
-
 thread_url_map = {}
 docs = Docs()
 
@@ -139,5 +107,3 @@ async def handle_url_verification_events(body, ack):
 # Start app
 if __name__ == "__main__":
     app.start(port=8443)
-
-    upload_file_to_slack('output.wav')
