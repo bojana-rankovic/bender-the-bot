@@ -4,6 +4,7 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from dotenv import load_dotenv
 from bender.components.moddspy import set_dspy, Recommender, PQA
+from paperqa import Docs
 
 
 load_dotenv()
@@ -42,6 +43,12 @@ async def handle_app_mention(event, say, context):
     # Send the same message back to the user
     await say(text="You have sent a message", channel=user_id)
 
+import re
+def contains_url(string):
+    url_pattern = r"(http[s]?://\S+)"
+    return re.search(url_pattern, string) is not None
+
+
 
 # Handle messages in a specific channel
 @app.event("message")
@@ -58,7 +65,7 @@ async def handle_channel_message(event, say):
     usr_ctxt = {
         "Bojana": "Bojana is interested in the application of new kernel methods to improve the performance of Bayesian Optimization.",
         "Andres": "Andres is very interested in the applications of language models to improve the performance of question answering systems.",
-        "Victor": "Victor is interested in graph neural networks and new evaluation methods and metrics",
+        "Victor": "Victor is a very hard-core organic chemist. He only cares about experimental results in total synthesis.",
     }
 
     uid_msg = {uid: usr_ctxt[n] for n, uid in usr_id_dict.items()}
@@ -76,42 +83,53 @@ async def handle_channel_message(event, say):
                     # Get the first message in the thread
                     first_message = get_first_message_in_thread(event["channel"], event["thread_ts"])
                     
-                    # Process the message and generate a response
-                    response = generate_response(
-                        context=(
-                            f"This user will ask questions about this context: CONTEXT {first_message} END_CONTEXT "
-                            f"\nHere are the user's interests, they may be relevant: {uid_msg[user_id]}"
-                        ),
-                        question=message_text
-                    )
+                    # Get urls from the first message
+                    if contains_url(first_message):
+                        urls = re.findall(r"https?://[^\s>]+", first_message)
+                        if urls:
+                            local_docs = Docs()  # Create a new Docs instance for each URL
+                            await local_docs.aadd_url(urls[0])
+
+                    response = await local_docs.aquery(str(message_text))
 
                     # Send the response as a threaded reply
-                    await say(text=response, channel=user_id, thread_ts=thread_ts)
+                    await say(text=str(response), channel=user_id, thread_ts=thread_ts)
     
-    else:
+    if event.get("channel") == "C06V8GPLKFU":
+        # Ignore messages from the bot itself
+        if event.get("bot_id") is None:
+            # Extract the message text, sender's user ID, and timestamp
 
+            message_text = event['text']
+            user_id = event["user"]
+            thread_ts = event["ts"]
 
-        if event.get("channel") == "C06V8GPLKFU":
-            # Ignore messages from the bot itself
-            if event.get("bot_id") is None:
-                # Extract the message text, sender's user ID, and timestamp
+            if contains_url(message_text):
+                urls = re.findall(r"https?://[^\s>]+", message_text)
+                if urls:
+                    local_docs = Docs()  # Create a new Docs instance for each URL
+                    await local_docs.aadd_url(urls[0])
+                paper_context = await local_docs.aquery("Give a general overview of this paper.")
 
-                message_text = event['text']
-                user_id = event["user"]
-                thread_ts = event["ts"]
-                
-                # Process the message and perform desired actions
-                response = process_message(message_text, user_id, thread_ts, uctxt_l = list(usr_ctxt.values()))
-                users = response.users.users
+            else:
+                paper_context = message_text
 
-                await say(text=str(response), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
-                for u in users:
-                    uid = usr_id_dict[u]
-                    await say(
-                        text=f"Hey there! I think you might be interested in this paper. Here's why: \n\n{response.reasoning}",
-                        channel=uid,
-                        thread_ts=thread_ts
-                    )
+            await say(text=str(paper_context), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+            await say(text=str(urls), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+
+            # Process the message and perform desired actions
+            response = process_message(str(paper_context), user_id, thread_ts, uctxt_l = list(usr_ctxt.values()))
+            users = response.users.users
+
+            await say(text=str(response), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+
+            for u in users:
+                uid = usr_id_dict[u]
+                await say(
+                    text=f"Hey there! I think you might be interested in this paper {urls[0]}.",
+                    channel=uid,
+                    thread_ts=thread_ts
+                )
 
 def get_first_message_in_thread(channel_id, thread_ts):
     try:
