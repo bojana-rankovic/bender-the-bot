@@ -2,6 +2,7 @@
 
 
 <picture>
+<img width="1509" alt="bender_slackbot" src="https://github.com/bojana-rankovic/bender-the-bot/assets/11743428/df1d3977-f531-41f2-b63c-c341573b7719">
   <source media="(prefers-color-scheme: light)" srcset="./assets/bender_slackbot.png" width='100%'>
   <img alt="Project logo" src="/assets/" width="100%">
 </picture>
