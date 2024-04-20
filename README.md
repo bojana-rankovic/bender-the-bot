@@ -2,15 +2,13 @@
 
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/repo_logo_dark.png" width='100%'>
-  <source media="(prefers-color-scheme: light)" srcset="./assets/repo_logo_light.png" width='100%'>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/bender_slackbot.png" width='100%'>
   <img alt="Project logo" src="/assets/" width="100%">
 </picture>
 
 <br>
 
 [![tests](https://github.com/schwallergroup/bender-the-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/schwallergroup/bender-the-bot)
-[![DOI:10.1101/2020.07.15.204701](https://zenodo.org/badge/DOI/10.48550/arXiv.2304.05376.svg)](https://doi.org/10.48550/arXiv.2304.05376)
 [![PyPI](https://img.shields.io/pypi/v/bender-the-bot)](https://img.shields.io/pypi/v/bender-the-bot)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bender-the-bot)](https://img.shields.io/pypi/pyversions/bender-the-bot)
 [![Documentation Status](https://readthedocs.org/projects/bender/badge/?version=latest)](https://bender.readthedocs.io/en/latest/?badge=latest)
@@ -29,7 +27,7 @@
 <br>
 
 
-Bender is the nicest bot!
+Bender is the nicest bot! Use it in your Slack workspace to make your life easier.
 
 ## 🔥 Usage
 
