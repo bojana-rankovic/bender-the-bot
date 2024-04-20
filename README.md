@@ -23,7 +23,6 @@
   bender
 </h1>
 
-### Note: functionality is split between branches: main and redirect_users 
 
 <br>
 
