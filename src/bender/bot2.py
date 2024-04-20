@@ -117,14 +117,14 @@ async def handle_channel_message(event, say):
             else:
                 paper_context = message_text
 
-            await say(text=str(paper_context), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
-            await say(text=str(urls), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+            # await say(text=str(paper_context), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+            # await say(text=str(urls), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
 
             # Process the message and perform desired actions
             response = process_message(str(paper_context), user_id, thread_ts, uctxt_l = list(usr_ctxt.values()))
             users = response.users.users
 
-            await say(text=str(response), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+            await say(text=str(response.users.users), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
 
             for u in users:
                 uid = usr_id_dict[u]
