@@ -8,13 +8,13 @@
 
 <br>
 
-[![tests](https://github.com/schwallergroup/bender-the-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/schwallergroup/bender-the-bot)
+[![tests](https://github.com/bojana-rankovic/bender-the-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/bojana-rankovic/bender-the-bot)
 [![PyPI](https://img.shields.io/pypi/v/bender-the-bot)](https://img.shields.io/pypi/v/bender-the-bot)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bender-the-bot)](https://img.shields.io/pypi/pyversions/bender-the-bot)
 [![Documentation Status](https://readthedocs.org/projects/bender/badge/?version=latest)](https://bender.readthedocs.io/en/latest/?badge=latest)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Cookiecutter template from @SchwallerGroup](https://img.shields.io/badge/Cookiecutter-schwallergroup-blue)](https://github.com/schwallergroup/liac-repo)
-[![Learn more @SchwallerGroup](https://img.shields.io/badge/Learn%20%0Amore-schwallergroup-blue)](https://schwallergroup.github.io)
+[![Cookiecutter template from @bojana-rankovic](https://img.shields.io/badge/Cookiecutter-bojana-rankovic-blue)](https://github.com/bojana-rankovic/liac-repo)
+[![Learn more @bojana-rankovic](https://img.shields.io/badge/Learn%20%0Amore-bojana-rankovic-blue)](https://bojana-rankovic.github.io)
 
 
 
@@ -57,7 +57,7 @@ $ pip install bender
 The most recent code and data can be installed directly from GitHub with:
 
 ```bash
-$ pip install git+https://github.com/schwallergroup/bender-the-bot.git
+$ pip install git+https://github.com/bojana-rankovic/bender-the-bot.git
 ```
 
 ## ✅ Citation
@@ -80,7 +80,7 @@ Philippe Schwaller et al. "Molecular Transformer: A Model for Uncertainty-Calibr
   title = { bender - Bender is the nicest bot! },
   howpublished = {Github},
   year = {2023},
-  url = {https://github.com/schwallergroup/bender-the-bot }
+  url = {https://github.com/bojana-rankovic/bender-the-bot }
 }
 ```
 
@@ -96,7 +96,7 @@ Philippe Schwaller et al. "Molecular Transformer: A Model for Uncertainty-Calibr
 ### 👐 Contributing
 
 Contributions, whether filing an issue, making a pull request, or forking, are appreciated. See
-[CONTRIBUTING.md](https://github.com/schwallergroup/bender-the-bot/blob/master/.github/CONTRIBUTING.md) for more information on getting involved.
+[CONTRIBUTING.md](https://github.com/bojana-rankovic/bender-the-bot/blob/master/.github/CONTRIBUTING.md) for more information on getting involved.
 
 
 ### Development Installation
@@ -104,7 +104,7 @@ Contributions, whether filing an issue, making a pull request, or forking, are a
 To install in development mode, use the following:
 
 ```bash
-$ git clone git+https://github.com/schwallergroup/bender-the-bot.git
+$ git clone git+https://github.com/bojana-rankovic/bender-the-bot.git
 $ cd bender-the-bot
 $ pip install -e .
 ```
@@ -118,14 +118,14 @@ run reproducibly with:
 $ tox
 ```
 
-Additionally, these tests are automatically re-run with each commit in a [GitHub Action](https://github.com/schwallergroup/bender-the-bot/actions?query=workflow%3ATests).
+Additionally, these tests are automatically re-run with each commit in a [GitHub Action](https://github.com/bojana-rankovic/bender-the-bot/actions?query=workflow%3ATests).
 
 ### 📖 Building the Documentation
 
 The documentation can be built locally using the following:
 
 ```shell
-$ git clone git+https://github.com/schwallergroup/bender-the-bot.git
+$ git clone git+https://github.com/bojana-rankovic/bender-the-bot.git
 $ cd bender-the-bot
 $ tox -e docs
 $ open docs/build/html/index.html
