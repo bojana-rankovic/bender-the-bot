@@ -27,6 +27,14 @@
 <br>
 
 
+## Check out the demo!
+
+
+https://github.com/bojana-rankovic/bender-the-bot/assets/11743428/5be9b60f-0579-475f-b3f9-5f492c90bd36
+
+
+
+
 Bender is the nicest bot! Use it in your Slack workspace to make your life easier.
 
 ## 🔥 Usage
