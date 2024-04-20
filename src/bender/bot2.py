@@ -91,9 +91,12 @@ async def handle_channel_message(event, say):
                             await local_docs.aadd_url(urls[0])
 
                     response = await local_docs.aquery(str(message_text))
+                    ans_ = str(response)
+                    ans = ans_.split('References')[0]
+
 
                     # Send the response as a threaded reply
-                    await say(text=str(response), channel=user_id, thread_ts=thread_ts)
+                    await say(text=ans, channel=user_id, thread_ts=thread_ts)
     
     if event.get("channel") == "C06V8GPLKFU":
         # Ignore messages from the bot itself
