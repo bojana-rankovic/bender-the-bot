@@ -1,5 +1,5 @@
 import os
-from slack_bolt import App
+from slack_bolt.async_app import AsyncApp
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ pqa = PQA()
 
 
 # Initialize the Slack app with your bot token and signing secret
-app = App(
+app = AsyncApp(
     token=os.environ.get("SLACK_BOT_TOKEN_2"),
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET_2"),
 )
@@ -24,7 +24,7 @@ client = WebClient(token=os.environ.get("SLACK_BOT_TOKEN_2"))
 
 # Handle app mentions in private chats
 @app.event("app_mention")
-def handle_app_mention(event, say, context):
+async def handle_app_mention(event, say, context):
     global bot_user_id
     
     # Get the bot's user ID from the AuthorizeResult
@@ -40,12 +40,12 @@ def handle_app_mention(event, say, context):
     message_text = message_text.replace(bot_mention, "").strip()
 
     # Send the same message back to the user
-    say(text="You have sent a message", channel=user_id)
+    await say(text="You have sent a message", channel=user_id)
 
 
 # Handle messages in a specific channel
 @app.event("message")
-def handle_channel_message(event, say):
+async def handle_channel_message(event, say):
 
 
     usr_id_dict = {
@@ -86,7 +86,7 @@ def handle_channel_message(event, say):
                     )
 
                     # Send the response as a threaded reply
-                    say(text=response, channel=user_id, thread_ts=thread_ts)
+                    await say(text=response, channel=user_id, thread_ts=thread_ts)
     
     else:
 
@@ -104,10 +104,10 @@ def handle_channel_message(event, say):
                 response = process_message(message_text, user_id, thread_ts, uctxt_l = list(usr_ctxt.values()))
                 users = response.users.users
 
-                say(text=str(response), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
+                await say(text=str(response), channel=usr_id_dict['Andres'], thread_ts=thread_ts)
                 for u in users:
                     uid = usr_id_dict[u]
-                    say(
+                    await say(
                         text=f"Hey there! I think you might be interested in this paper. Here's why: \n\n{response.reasoning}",
                         channel=uid,
                         thread_ts=thread_ts
